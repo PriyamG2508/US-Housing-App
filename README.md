@@ -111,7 +111,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-**Your Name** - priyamgupta2508@gmail.com
+**Priyam Gupta** - priyamgupta2508@gmail.com
 
 Live dashboard link: [Click here](https://priyamguptashinyapp.shinyapps.io/us_housing_app/)
 ---
