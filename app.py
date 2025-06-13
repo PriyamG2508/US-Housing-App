@@ -10,17 +10,12 @@ from state_choices import STATE_CHOICES
 from shiny import reactive
 from shiny.express import input, render, ui
 
-# ---------------------------------------------------------------------
 # Reading in Files
-# ---------------------------------------------------------------------
 new_listings_df = pd.read_csv("Metro_new_listings_uc_sfrcondo_sm_month.csv")
 median_listing_price_df = pd.read_csv("Metro_mlp_uc_sfrcondo_sm_month.csv")
 for_sale_inventory_df = pd.read_csv("Metro_invt_fs_uc_sfrcondo_sm_month.csv")
 
-
-# ---------------------------------------------------------------------
 # Helper functions - converting to DateTime
-# ---------------------------------------------------------------------
 def string_to_date(date_str):
     return datetime.strptime(date_str, "%Y-%m-%d").date()
 
@@ -30,18 +25,13 @@ def filter_by_date(df: pd.DataFrame,date_range: tuple):
     dates = pd.to_datetime(df["Date"], format="%Y-%m-%d").dt.date
     return df[(dates >= rng[0]) & (dates <= rng[1])]
 
-
-# ---------------------------------------------------------------------
 # Visualizations
-# ---------------------------------------------------------------------
-
 #for_sale_inventory_df2 = for_sale_inventory_df["StateName"].fillna("United States")
 #for_sale_inventory_df2 = for_sale_inventory_df["StateName"].drop_duplicates()
 #for_sale_inventory_df2 = for_sale_inventory_df2.sort_values().tolist()
  
 ui.page_opts(title= "US Housing App")
 
-# FIXED: Combined both sidebar blocks into one
 with ui.sidebar():
     ui.input_dark_mode(mode="light")
     ui.input_select("state","Filter by State", choices=STATE_CHOICES),
